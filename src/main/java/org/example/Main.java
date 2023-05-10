@@ -30,7 +30,6 @@ public class Main {
 
     public static void chromeDriver() {
         try {
-            holdBrowserOpen = true;
             //Locates the chromedriver.exe file
             System.setProperty("webdriver.chrome.driver", "src/main/java/chromedriver.exe");
             //Maximizes the window
