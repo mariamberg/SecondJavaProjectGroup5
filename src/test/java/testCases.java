@@ -27,7 +27,6 @@ public class testCases {
         assertTrue(CreateTranscript.getNewTranscript());
     }
 
-    @Disabled
     @Test
     void checkIfTranscriptIsDownloaded(){
         DownloadTranscript.downloadTranscript();

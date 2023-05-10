@@ -9,8 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 import static org.example.Main.logger;
 
 public class CreateTranscript {
@@ -45,6 +44,7 @@ public class CreateTranscript {
         // Click on Intyg
         $(By.linkText("Intyg")).shouldBe(visible).click();
 
+
         // Click on Skapa Intyg
         if ($(By.cssSelector("button.btn.btn-ladok-brand")).shouldBe(visible).isDisplayed()) {
             $(By.cssSelector("button.btn.btn-ladok-brand")).shouldBe(visible).click();
@@ -64,14 +64,18 @@ public class CreateTranscript {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String todayDate = today.format(formatter);
 
-        // Search for the date on the page
-        if (Selenide.$(By.xpath("//*[contains(text(), '" + todayDate + "')]")).exists()) {
+        // Compares transcript date with today's date
+        if (Selenide.$(By.xpath("//*[contains(text(), '" + todayDate + "')]")).shouldBe(visible).exists()) {
             logger.info("Transcript created on " + todayDate + " is found on the page.");
             newTranscript = true;
+            System.out.println(newTranscript);
         } else {
             logger.error("Transcript not found");
         }
+        switchTo().window(0);
+        Main.logOut();
     }
+
 
     // Getter for the boolean newTranscript
     public static boolean getNewTranscript() {
