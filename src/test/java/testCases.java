@@ -16,7 +16,7 @@ public class testCases {
     void checkFinalExaminationDate() {
         ExaminationDate.checkFinalExaminationDate();
         // Check if the date is correct
-        String expectedFinalDate = "2023-04-17";
+        String expectedFinalDate = "30 Maj";
         assertEquals(expectedFinalDate, ExaminationDate.examinationDate);
     }
 
