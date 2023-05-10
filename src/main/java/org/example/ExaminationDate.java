@@ -1,12 +1,14 @@
 package org.example;
 
 import com.codeborne.selenide.Screenshots;
+import com.codeborne.selenide.SelenideElement;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 
 import java.io.File;
 import java.io.IOException;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selectors.byLinkText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
@@ -39,7 +41,7 @@ public class ExaminationDate {
         switchTo().window(2);
 
         // Save the examination date
-        examinationDate = $(By.cssSelector("tr.data-white td.commonCell.data:last-child")).getText();
+        examinationDate = $(By.xpath("//td[contains(text(), '30 Maj')]")).getText();
 
         // Take a screenshot
         try {
