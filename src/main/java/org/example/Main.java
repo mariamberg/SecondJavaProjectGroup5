@@ -1,6 +1,7 @@
 package org.example;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.openqa.selenium.By;
@@ -92,7 +93,7 @@ public class Main {
             // Click the avatar dropdown
             $(By.id("_145_userAvatar")).click();
             // Click the logout button
-             //logOutButton = $(By.cssSelector(".sign-out")).click();
+            Selenide.$(By.cssSelector("a[href='/c/portal/logout']")).click();
             logger.info("Logged out successfully");
         }
         catch (Exception e) {
